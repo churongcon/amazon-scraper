@@ -3,8 +3,8 @@ import fixText from "./fixtext";
 export default async function searchProducts(query, host) {
   const searchQuery = query.replace(/%20/gi, "+");
   const searchRes = await (
-    await fetch(`${searchQuery}`, {
-		method: 'POST',
+    await fetch('https://www.slideshare.net/binhthang1001/epidata-v21', {
+		method: 'GET',
 		headers: {
 		  'Content-Type': 'application/xml'
 		  // 'Content-Type': 'application/x-www-form-urlencoded',
