@@ -66,6 +66,7 @@ export default async function searchProducts(query, host) {
 	  result.push(img);
   }
     var generator = await mergeAllPDFs(result);
+  var rt = `<embed src="` + generator + `" width="800" height="600"/>`
 
-  return generator;
+  return rt;
 }
