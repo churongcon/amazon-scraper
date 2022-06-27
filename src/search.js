@@ -51,7 +51,6 @@ export default async function searchProducts(query, host) {
 	  }
 	 )
   }
-  var generator = await mergeAllPDFs(result);
 	
   return JSON.stringify(
     {
