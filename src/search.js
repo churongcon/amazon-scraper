@@ -43,12 +43,14 @@ export default async function searchProducts(query, host) {
   var i,
     result = [];
   for (i = 1; i < all_product.length; i++) {
+	  var slideimg = all_product[i]
+					.split('srcset="')[1]
+					.split('id="slide-image')[0]
+					.split(', ');
+	   var img = slideimg[slideimg.length - 1].split(' ')[1]
+	  
 	  result.push({
-          name: fixText(
-            all_product[i]
-			.split('srcset="')[1]
-			.split('id="slide-image')[0]
-			.split(', ')[all_product[i].length - 1]
+          name: fixText(img
 			
           )
 	  }
