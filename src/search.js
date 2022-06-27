@@ -39,7 +39,6 @@ export default async function searchProducts(query, host) {
   var datab = searchRes.match(regex);
   var all_product = searchRes.split('class="slide-image"');
   
-  
   var i,
     result = [];
   for (i = 1; i < all_product.length; i++) {
