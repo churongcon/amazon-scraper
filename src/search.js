@@ -1,14 +1,14 @@
 import fixText from "./fixtext";
-import PDFLib from "./pdf-lib";
+import { PDFDocument, StandardFonts, rgb } from "./pdf-lib";
 
 async function mergeAllPDFs(urls) {
     
-    const pdfDoc = await PDFLib.PDFDocument.create();
+    const pdfDoc = await PDFDocument.create();
     const numDocs = urls.length;
     
     for(var i = 0; i < numDocs; i++) {
         const donorPdfBytes = await fetch(urls[i]).then(res => res.arrayBuffer());
-        const donorPdfDoc = await PDFLib.PDFDocument.load(donorPdfBytes);
+        const donorPdfDoc = await PDFDocument.load(donorPdfBytes);
         const docLength = donorPdfDoc.getPageCount();
         for(var k = 0; k < docLength; k++) {
             const [donorPage] = await pdfDoc.copyPages(donorPdfDoc, [k]);
