@@ -6,7 +6,7 @@ async function handleRequest(request) {
   /* Handle the incoming request */
   const headers = header(request.headers);
   const path = new URL(request.url).pathname; /* Get the pathname */
-  
+
   if (request.method === "GET") {
     /* Respond for GET request method */
     if (path.startsWith("/search/")) {
