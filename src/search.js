@@ -36,7 +36,7 @@ export default async function searchProducts(query, host) {
 	})
   ).text();
   const regex = /class=\\"slide-image/gm;
-  var datab = searchRes.search(regex);
+  var datab = searchRes.match(regex);
   var all_product = searchRes.split('class="slide-image"');
   
   
@@ -46,7 +46,7 @@ export default async function searchProducts(query, host) {
     {
       status: true,
       total_result: all_product.length,
-      query: all_product,
+      query: all_product[1],
       fetch_from: datab,
       result,
     },
