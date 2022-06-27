@@ -36,10 +36,10 @@ export default async function searchProducts(query, host) {
 	})
   ).text();
   const regex = /class=\\"slide-image/gm;
-  
-  var all_product = searchRes.split('slide-image');
-  
   var datab = searchRes.search(regex);
+  var all_product = searchRes.split('class="slide-image"');
+  
+  
   var i,
     result = [];
   return JSON.stringify(
