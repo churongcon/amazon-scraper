@@ -50,7 +50,7 @@ export default async function searchProducts(query, host) {
 	   var img = slideimg[slideimg.length - 1];
 	  
 	  result.push({
-          name: fixText(img
+          name: fixText(img.split(' ')[0]
 			
           )
 	  }
