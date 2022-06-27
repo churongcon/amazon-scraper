@@ -1,9 +1,9 @@
 import fixText from "./fixtext";
 
 export default async function searchProducts(query, host) {
-  const searchQuery = query.replace(/%20/gi, "+");
+  const searchQuery = query;
   const searchRes = await (
-    await fetch(`${query}`, {
+    await fetch(`${searchQuery}`, {
 		method: 'GET',
 		headers: {
 		  'Content-Type': 'application/xml'
