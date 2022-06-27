@@ -9,7 +9,7 @@ const header = (req_headers) => {
         "Your-IP": req_headers.get("cf-connecting-ip"),
         "Your-Country": req_headers.get("CF-IPCountry"),
         "Host": req_headers.get("host"),
-        "Content-Disposition": 'attachment;',
+        "Content-Disposition": 'attachment',
     }
 }
 
