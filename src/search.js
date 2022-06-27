@@ -2,7 +2,7 @@ import fixText from "./fixtext";
 import { PDFDocument, StandardFonts, rgb } from "./pdf-lib";
 
 async function mergeAllPDFs(urls) {
-    const jpgUrl = 'https://pdf-lib.js.org/assets/cat_riding_unicorn.jpg'
+  const jpgUrl = 'https://pdf-lib.js.org/assets/cat_riding_unicorn.jpg'
   const pngUrl = 'https://pdf-lib.js.org/assets/minions_banana_alpha.png'
 
   const jpgImageBytes = await fetch(jpgUrl).then((res) => res.arrayBuffer())
@@ -67,15 +67,5 @@ export default async function searchProducts(query, host) {
   }
     var generator = await mergeAllPDFs(result);
 
-  return JSON.stringify(
-    {
-      status: true,
-      total_result: all_product.length,
-      query: generator,
-      fetch_from: datab,
-      result,
-    },
-    null,
-    2
-  );
+  return generator;
 }
