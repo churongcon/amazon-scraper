@@ -42,6 +42,14 @@ export default async function searchProducts(query, host) {
   
   var i,
     result = [];
+  for (i = 1; i < all_product.length; i++) {
+	  result.push({
+          name: fixText(
+            all_product[i]
+          )
+	  }
+	 )
+  }
   return JSON.stringify(
     {
       status: true,
