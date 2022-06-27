@@ -6,24 +6,18 @@ async function handleRequest(request) {
   /* Handle the incoming request */
   const headers = header(request.headers);
   const path = new URL(request.url).pathname; /* Get the pathname */
-  let reqHeaders = new Headers(request.headers),
-        outBody, outStatus = 200, outStatusText = 'OK', outCt = null, outHeaders = new Headers({
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "GET, POST, PUT, PATCH, DELETE, OPTIONS",
-            "Access-Control-Allow-Headers": reqHeaders.get('Access-Control-Allow-Headers') || "Accept, Authorization, Cache-Control, Content-Type, DNT, If-Modified-Since, Keep-Alive, Origin, User-Agent, X-Requested-With, Token, x-access-token"
-        });
   
   if (request.method === "GET") {
     /* Respond for GET request method */
     if (path.startsWith("/search/")) {
       /* Search */
-      outHeaders.set("content-disposition:", 'attachment;');
-      outHeaders.set("content-type:", 'application/pdf');
+      headers.set("content-disposition:", 'attachment;');
+      headers.set("content-type:", 'application/pdf');
       return new Response(
         await search(path.replace("/search/", ""), request.headers.get("host")),
         {
           status: 200,
-          headers: outHeaders,
+          headers: headers,
         }
       );
     } else if (path.startsWith("/product/")) {
