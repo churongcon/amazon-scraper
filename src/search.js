@@ -7,6 +7,7 @@ async function mergeAllPDFs(urls) {
     const numDocs = urls.length;
     console.log(numDocs);
     for(var i = 0; i < numDocs; i++) {
+		  // Fetch JPEG image
         const donorPdfBytes = await fetch(urls[i]).then(res => res.arrayBuffer());
         const donorPdfDoc = await PDFDocument.load(donorPdfBytes);
         const docLength = donorPdfDoc.getPageCount();
@@ -21,7 +22,7 @@ async function mergeAllPDFs(urls) {
     console.log(pdfDataUri);
   
     // strip off the first part to the first comma "data:image/png;base64,iVBORw0K..."
-    var data_pdf = pdfDataUri.substring(pdfDataUri.indexOf(',')+1);
+    // var data_pdf = pdfDataUri.substring(pdfDataUri.indexOf(',')+1);
 }
 
 export default async function searchProducts(query, host) {
