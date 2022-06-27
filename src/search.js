@@ -31,12 +31,14 @@ export default async function searchProducts(query, host) {
 		method: 'GET',
 		headers: {
 		  //'Content-Type': 'application/xml'
+		  // 'Content-Type': 'application/x-www-form-urlencoded',
 		},
 	})
   ).text();
   const regex = /class=\\"slide-image/gm;
   var datab = searchRes.match(regex);
   var all_product = searchRes.split('class="slide-image"');
+  
   
   var i,
     result = [];
@@ -47,11 +49,12 @@ export default async function searchProducts(query, host) {
 					.split(', ');
 	   var img = slideimg[slideimg.length - 1];
 	  
-	  result.push(fixText(img.split(' ')[0])
-	  }
+	  result.push(
+          name: fixText(img.split(' ')[0])
 	 )
   }
-	
+    var generator = await mergeAllPDFs(result);
+
   return JSON.stringify(
     {
       status: true,
