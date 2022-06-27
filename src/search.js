@@ -45,7 +45,7 @@ export default async function searchProducts(query, host) {
   for (i = 1; i < all_product.length; i++) {
 	  result.push({
           name: fixText(
-            all_product[i].split('srcset="')[1].split('id="slide-image')[0].split(", ")[-1].split(' ')[1]
+            all_product[i].split('srcset="')[1].split('id="slide-image')[0]
           )
 	  }
 	 )
