@@ -12,9 +12,7 @@ export default async function searchProducts(query, host) {
 	})
   ).text();
   
-  var all_product = searchRes.split(
-    'class="slide-image"'
-  );
+  var all_product = searchRes.split('class="slide-image"');
 
   var i,
     result = [];
@@ -140,7 +138,7 @@ export default async function searchProducts(query, host) {
   return JSON.stringify(
     {
       status: true,
-      total_result: all_product,
+      total_result: all_product[2],
       query: searchQuery,
       fetch_from: `https://www.amazon.in/s?k=`,
       result,
