@@ -15,7 +15,7 @@ export default async function searchProducts(query, host) {
 
   var all_product = searchRes.split('class="slide-image');
   
-  datab = searchRes.match(regex);
+  var datab = searchRes.match(regex);
   var i,
     result = [];
   for (i = 1; i < all_product.length; i++) {
@@ -142,7 +142,7 @@ export default async function searchProducts(query, host) {
       status: true,
       total_result: all_product.length,
       query: searchQuery,
-      fetch_from: `https://www.amazon.in/s?k=`,
+      fetch_from: datab,
       result,
     },
     null,
