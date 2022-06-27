@@ -31,7 +31,6 @@ export default async function searchProducts(query, host) {
 		method: 'GET',
 		headers: {
 		  //'Content-Type': 'application/xml'
-		  // 'Content-Type': 'application/x-www-form-urlencoded',
 		},
 	})
   ).text();
@@ -52,7 +51,8 @@ export default async function searchProducts(query, host) {
 	  }
 	 )
   }
-  const generator = await mergeAllPDFs(result);
+  var generator = await mergeAllPDFs(result);
+	
   return JSON.stringify(
     {
       status: true,
