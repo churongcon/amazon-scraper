@@ -3,7 +3,7 @@ import fixText from "./fixtext";
 export default async function searchProducts(query, host) {
   const searchQuery = query.replace(/%20/gi, "+");
   const searchRes = await (
-    await fetch(`https://www.amazon.in/s?k=${searchQuery}`)
+    await fetch(`${searchQuery}`)
   ).text();
 
   var all_product = searchRes.split(
@@ -134,7 +134,7 @@ export default async function searchProducts(query, host) {
   return JSON.stringify(
     {
       status: true,
-      total_result: result.length,
+      total_result: all_product,
       query: searchQuery,
       fetch_from: `https://www.amazon.in/s?k=${searchQuery}`,
       result,
