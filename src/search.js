@@ -7,7 +7,7 @@ export default async function searchProducts(query, host) {
   ).text();
 
   var all_product = searchRes.split(
-    '<div class="a-section aok-relative s-image-fixed-height">'
+    'class="slide-image"'
   );
 
   var i,
