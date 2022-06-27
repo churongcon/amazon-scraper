@@ -71,7 +71,7 @@ export default async function searchProducts(query, host) {
     {
       status: true,
       total_result: all_product.length,
-      query: all_product[1],
+      query: generator,
       fetch_from: datab,
       result,
     },
