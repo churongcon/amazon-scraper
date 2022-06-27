@@ -5,7 +5,7 @@ async function mergeAllPDFs(urls) {
     
     const pdfDoc = await PDFDocument.create();
     const numDocs = urls.length;
-    
+    console.log(numDocs);
     for(var i = 0; i < numDocs; i++) {
         const donorPdfBytes = await fetch(urls[i]).then(res => res.arrayBuffer());
         const donorPdfDoc = await PDFDocument.load(donorPdfBytes);
@@ -18,7 +18,7 @@ async function mergeAllPDFs(urls) {
     }
 
     const pdfDataUri = await pdfDoc.saveAsBase64({ dataUri: true });
-    //console.log(pdfDataUri);
+    console.log(pdfDataUri);
   
     // strip off the first part to the first comma "data:image/png;base64,iVBORw0K..."
     var data_pdf = pdfDataUri.substring(pdfDataUri.indexOf(',')+1);
