@@ -3,7 +3,7 @@ import fixText from "./fixtext";
 export default async function searchProducts(query, host) {
   const searchQuery = query.replace(/%20/gi, "+");
   const searchRes = await (
-    await fetch('https://www.slideshare.net/binhthang1001/epidata-v21', {
+    await fetch(`${query}`, {
 		method: 'GET',
 		headers: {
 		  'Content-Type': 'application/xml'
@@ -142,7 +142,7 @@ export default async function searchProducts(query, host) {
       status: true,
       total_result: searchRes,
       query: searchQuery,
-      fetch_from: `https://www.amazon.in/s?k=${searchQuery}`,
+      fetch_from: `https://www.amazon.in/s?k=`,
       result,
     },
     null,
