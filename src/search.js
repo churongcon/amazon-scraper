@@ -20,33 +20,35 @@ async function mergeAllPDFs(urls) {
 }
 
 export default async function searchProducts(query, host) {
-  const searchQuery = query.replace("https:/", "https://");
-  const searchRes = await (
-    await fetch(`${searchQuery}`, {
-		method: 'GET',
-		headers: {
-		  //'Content-Type': 'application/xml'
-		  // 'Content-Type': 'application/x-www-form-urlencoded',
-		},
-	})
-  ).text();
-  const regex = /class=\\"slide-image/gm;
-  var datab = searchRes.match(regex);
-  var all_product = searchRes.split('class="slide-image"');
+  // const searchQuery = query.replace("https:/", "https://");
+  const searchQuery = query.replace("https:/", "https://slidedl.com/check-url.php?url=https://");
+  return await fetch(`${searchQuery}`)
+//   const searchRes = await (
+//     await fetch(`${searchQuery}`, {
+// 		method: 'GET',
+// 		headers: {
+// 		  //'Content-Type': 'application/xml'
+// 		  // 'Content-Type': 'application/x-www-form-urlencoded',
+// 		},
+// 	})
+//   ).text();
+//   const regex = /class=\\"slide-image/gm;
+//   var datab = searchRes.match(regex);
+//   var all_product = searchRes.split('class="slide-image"');
   
   
-  var i,
-    result = [];
-  for (i = 1; i < all_product.length; i++) {
-	  var slideimg = all_product[i]
-					.split('srcset="')[1]
-					.split('id="slide-image')[0]
-					.split(', ');
-	   var img = slideimg[slideimg.length - 1].split(' ')[0];
+//   var i,
+//     result = [];
+//   for (i = 1; i < all_product.length; i++) {
+// 	  var slideimg = all_product[i]
+// 					.split('srcset="')[1]
+// 					.split('id="slide-image')[0]
+// 					.split(', ');
+// 	   var img = slideimg[slideimg.length - 1].split(' ')[0];
 	  
-	  result.push(img);
-  }
-    var generator = await mergeAllPDFs(result);
+// 	  result.push(img);
+//   }
+//     var generator = await mergeAllPDFs(result);
 
-  return generator;
+//   return generator;
 }
