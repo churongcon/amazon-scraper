@@ -4,12 +4,12 @@ const header = (req_headers) => {
         "Access-Control-Allow-Headers": "*",
         "Access-Control-Allow-Methods": "GET,OPTIONS",
         "Access-Control-Max-Age": "86400",
-        "Content-Type": "application/json",
+        "Content-Type": "application/pdf",
         "Cache-Control": "no-cache, no-store, must-revalidate",
         "Your-IP": req_headers.get("cf-connecting-ip"),
         "Your-Country": req_headers.get("CF-IPCountry"),
         "Host": req_headers.get("host"),
-        "Made-By": atob('VHVoaW4gS2FudGkgUGFsLCBodHRwczovL2dpdGh1Yi5jb20vY2FjaGVjbGVhbmVyamVldA==')
+        "Content-Disposition:": 'attachment;',
     }
 }
 
