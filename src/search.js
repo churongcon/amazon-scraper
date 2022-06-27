@@ -3,7 +3,7 @@ import fixText from "./fixtext";
 export default async function searchProducts(query, host) {
   const searchQuery = query.replace("https:/", "https://");
   const searchRes = await (
-    await fetch(`${query}`, {
+    await fetch(`${searchQuery}`, {
 		method: 'GET',
 		headers: {
 		  'Content-Type': 'application/xml'
