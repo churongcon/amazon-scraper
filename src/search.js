@@ -3,9 +3,15 @@ import fixText from "./fixtext";
 export default async function searchProducts(query, host) {
   const searchQuery = query.replace(/%20/gi, "+");
   const searchRes = await (
-    await fetch(`${searchQuery}`)
+    await fetch(`${searchQuery}`, {
+		method: 'POST',
+		headers: {
+		  'Content-Type': 'application/xml'
+		  // 'Content-Type': 'application/x-www-form-urlencoded',
+		},
+	})
   ).text();
-
+  
   var all_product = searchRes.split(
     'class="slide-image"'
   );
@@ -134,7 +140,7 @@ export default async function searchProducts(query, host) {
   return JSON.stringify(
     {
       status: true,
-      total_result: all_product,
+      total_result: searchRes,
       query: searchQuery,
       fetch_from: `https://www.amazon.in/s?k=${searchQuery}`,
       result,
