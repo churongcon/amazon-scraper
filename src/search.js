@@ -140,7 +140,7 @@ export default async function searchProducts(query, host) {
   return JSON.stringify(
     {
       status: true,
-      total_result: searchRes,
+      total_result: all_product,
       query: searchQuery,
       fetch_from: `https://www.amazon.in/s?k=`,
       result,
