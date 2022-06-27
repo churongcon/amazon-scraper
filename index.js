@@ -11,13 +11,11 @@ async function handleRequest(request) {
     /* Respond for GET request method */
     if (path.startsWith("/search/")) {
       /* Search */
-      headers.set("content-disposition:", 'attachment;');
-      headers.set("content-type:", 'application/pdf');
       return new Response(
         await search(path.replace("/search/", ""), request.headers.get("host")),
         {
           status: 200,
-          headers: headers,
+          headers,
         }
       );
     } else if (path.startsWith("/product/")) {
