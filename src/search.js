@@ -31,7 +31,7 @@ async function mergeAllPDFs(urls) {
     height: pngDims.height,
   })
 
-    const pdfDataUri = await pdfDoc.saveAsBase64({ dataUri: true });
+    const pdfDataUri = await pdfDoc.save();
     return pdfDataUri;
   
     // strip off the first part to the first comma "data:image/png;base64,iVBORw0K..."
