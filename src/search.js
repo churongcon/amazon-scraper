@@ -2,21 +2,34 @@ import fixText from "./fixtext";
 import { PDFDocument, StandardFonts, rgb } from "./pdf-lib";
 
 async function mergeAllPDFs(urls) {
-    
-    const pdfDoc = await PDFDocument.create();
-    const numDocs = urls.length;
-    console.log(numDocs);
-    for(var i = 0; i < numDocs; i++) {
-		  // Fetch JPEG image
-        const donorPdfBytes = await fetch(urls[i]).then(res => res.arrayBuffer());
-        const donorPdfDoc = await PDFDocument.load(donorPdfBytes);
-        const docLength = donorPdfDoc.getPageCount();
-        for(var k = 0; k < docLength; k++) {
-            const [donorPage] = await pdfDoc.copyPages(donorPdfDoc, [k]);
-            //console.log("Doc " + i+ ", page " + k);
-            pdfDoc.addPage(donorPage);
-        }
-    }
+    const jpgUrl = 'https://pdf-lib.js.org/assets/cat_riding_unicorn.jpg'
+  const pngUrl = 'https://pdf-lib.js.org/assets/minions_banana_alpha.png'
+
+  const jpgImageBytes = await fetch(jpgUrl).then((res) => res.arrayBuffer())
+  const pngImageBytes = await fetch(pngUrl).then((res) => res.arrayBuffer())
+
+  const pdfDoc = await PDFDocument.create()
+
+  const jpgImage = await pdfDoc.embedJpg(jpgImageBytes)
+  const pngImage = await pdfDoc.embedPng(pngImageBytes)
+
+  const jpgDims = jpgImage.scale(0.5)
+  const pngDims = pngImage.scale(0.5)
+
+  const page = pdfDoc.addPage()
+
+  page.drawImage(jpgImage, {
+    x: page.getWidth() / 2 - jpgDims.width / 2,
+    y: page.getHeight() / 2 - jpgDims.height / 2 + 250,
+    width: jpgDims.width,
+    height: jpgDims.height,
+  })
+  page.drawImage(pngImage, {
+    x: page.getWidth() / 2 - pngDims.width / 2 + 75,
+    y: page.getHeight() / 2 - pngDims.height + 250,
+    width: pngDims.width,
+    height: pngDims.height,
+  })
 
     const pdfDataUri = await pdfDoc.saveAsBase64({ dataUri: true });
     console.log(pdfDataUri);
