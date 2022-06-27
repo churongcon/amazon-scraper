@@ -48,7 +48,7 @@ export default async function searchProducts(query, host) {
             all_product[i]
 			.split('srcset="')[1]
 			.split('id="slide-image')[0]
-			.split(', ')[1]
+			.split(', ')[all_product[i].length - 1]
 			
           )
 	  }
