@@ -13,7 +13,7 @@ export default async function searchProducts(query, host) {
   ).text();
   
   var all_product = searchRes.split('class="slide-image"');
-
+  console.log(all_product);
   var i,
     result = [];
   for (i = 1; i < all_product.length; i++) {
@@ -138,7 +138,7 @@ export default async function searchProducts(query, host) {
   return JSON.stringify(
     {
       status: true,
-      total_result: all_product[2],
+      total_result: all_product,
       query: searchQuery,
       fetch_from: `https://www.amazon.in/s?k=`,
       result,
