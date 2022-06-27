@@ -47,7 +47,7 @@ export default async function searchProducts(query, host) {
 					.split('srcset="')[1]
 					.split('id="slide-image')[0]
 					.split(', ');
-	   var img = slideimg[slideimg.length - 1].split(' ')[1]
+	   var img = slideimg[slideimg.length - 1];
 	  
 	  result.push({
           name: fixText(img
