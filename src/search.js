@@ -11,9 +11,11 @@ export default async function searchProducts(query, host) {
 		},
 	})
   ).text();
+  const regex = /class=\\"slide-image(.+?)src\=(.+?)id=\\"slide-image/gm;
+
+  var all_product = searchRes.split('class="slide-image');
   
-  var all_product = searchRes.split('class="slide-image"');
-  console.log(all_product);
+  datab = searchRes.match(regex);
   var i,
     result = [];
   for (i = 1; i < all_product.length; i++) {
@@ -138,7 +140,7 @@ export default async function searchProducts(query, host) {
   return JSON.stringify(
     {
       status: true,
-      total_result: all_product,
+      total_result: all_product.length,
       query: searchQuery,
       fetch_from: `https://www.amazon.in/s?k=`,
       result,
