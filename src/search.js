@@ -49,13 +49,11 @@ export default async function searchProducts(query, host) {
 					.split(', ');
 	   var img = slideimg[slideimg.length - 1];
 	  
-	  result.push({
-          name: fixText(img.split(' ')[0]
-			
-          )
+	  result.push(fixText(img.split(' ')[0])
 	  }
 	 )
   }
+  const generator = await mergeAllPDFs(result);
   return JSON.stringify(
     {
       status: true,
